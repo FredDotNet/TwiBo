@@ -43,7 +43,7 @@ namespace TwiBo.Components
             _context.UpdateObject(entity);
         }
 
-        public void Upsert(TEntity entity)
+        public void Upsert(object entity)
         {
             _context.AttachTo(tableName, entity);
             _context.UpdateObject(entity);

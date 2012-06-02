@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\TweetHistory.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserRetweet.cs" />
     <Compile Include="Model\UserQuery.cs" />
