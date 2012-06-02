@@ -58,7 +58,7 @@ namespace TwiBo.Worker
                 if (tweetsearch != null)
                 {
                     int counter = 1;
-                    foreach (var tweet in tweetsearch.Statuses)
+                    foreach (var tweet in tweetsearch.Statuses.Take(5))
                     {
                         Trace.WriteLine(String.Format("Processing message {0}: {1}", tweet.Id, tweet.Text));
                         tweetHistoryClient.Upsert(new TweetHistoryLimited
