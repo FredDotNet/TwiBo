@@ -4,12 +4,14 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="twibostorage" value="DefaultEndpointsProtocol=https;AccountName=twibostorage;AccountKey=seFA+buWQB6uG+Ojem5ESe13dFW3YmWXOYX+CsDBxIRT5rId8u/02d2PlR7z6IgiAbJJxRl5j5lQxFIIDHFrng==" />
     </ConfigurationSettings>
   </Role>
   <Role name="TwiBo.Worker">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="twibostorage" value="DefaultEndpointsProtocol=https;AccountName=twibostorage;AccountKey=seFA+buWQB6uG+Ojem5ESe13dFW3YmWXOYX+CsDBxIRT5rId8u/02d2PlR7z6IgiAbJJxRl5j5lQxFIIDHFrng==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
