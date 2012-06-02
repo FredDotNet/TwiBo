@@ -1,8 +1,29 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<TwiBo.Web.Models.DashboardModel>
+
+@{
+    ViewBag.Title = "Dashboard";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+<h2>Dashboard</h2>
+<table style="width:100%">
+    <tr>
+        <th>
+            Your Twibo retweets
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                @foreach (var tweet in item.TweetHistory)
+                {
+                    <div style="margin-bottom:10px; color:Black;">
+                    @Html.DisplayFor(tw => tweet.Author) @@ @Html.DisplayFor(tw => tweet.Timestamp)<div style="color:#777;margin-left:20px; margin-bottom:5px;">@Html.Raw(tweet.TextAsHtml)</div>
+                    </div>
+                }
+        </td>
+    </tr>
+}
+
+</table>
