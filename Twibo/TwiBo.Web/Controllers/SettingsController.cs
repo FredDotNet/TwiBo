@@ -10,14 +10,22 @@ namespace TwiBo.Web.Controllers
 {
     public class SettingsController : Controller
     {
+        private const string partitionKey = "koen";
+        private TableStorageClient<UserQuery> storageClient;
+        public SettingsController()
+        {
+            storageClient= new TableStorageClient<UserQuery>("UserQuery");
+        }
+
         //
         // GET: /Settings/
 
         public ActionResult Index()
         {
+            var queries = storageClient.CreateQuery().Where(q => q.PartitionKey == partitionKey).ToList();
             var model = new SettingsModel()
             {
-                Queries = new List<UserQuery>{ new UserQuery{ Accounts = "test 123 34", Hashtags = "WAS12"}}
+                Queries = queries,
             };
 
             return View(model);
@@ -27,19 +35,24 @@ namespace TwiBo.Web.Controllers
         [HttpPost]
         public ActionResult Index(SettingsModel model)
         {
-            var storageClient = new TableStorageClient<UserQuery>("UserQuery");
             storageClient.Insert(new UserQuery()
             {
+                Name = model.Name,
                 Accounts = model.Accounts,
                 Hashtags = model.HashTags,
-                PartitionKey = "koen",
+                PartitionKey = partitionKey,
                 RowKey = Guid.NewGuid().ToString(),
             });
             storageClient.SaveChanges();
 
-            
-
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(string id)
+        {
+            var model = new SettingsModel();
+
+            return View(model);
         }
     }
 }

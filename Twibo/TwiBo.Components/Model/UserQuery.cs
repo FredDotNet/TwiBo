@@ -22,5 +22,7 @@ namespace TwiBo.Components
         /// Space delimited.
         /// </summary>
         public string Hashtags { get; set; }
+
+        public string Name { get; set; }
     }
 }
