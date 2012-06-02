@@ -1,0 +1,76 @@
+﻿@model TwiBo.Web.Models.SettingsModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>SettingModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Accounts)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Accounts)
+            @Html.ValidationMessageFor(model => model.Accounts)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HashTags)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HashTags)
+            @Html.ValidationMessageFor(model => model.HashTags)
+        </div>
+
+        <p>
+            <input type="submit" value="Add" />
+        </p>
+    </fieldset>
+}
+<h3>Queries</h3>
+<div>
+    <table>
+    <tr>
+        <th>
+            Accounts
+        </th>
+        <th>
+            Hashtags
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Queries) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accounts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hashtags)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
