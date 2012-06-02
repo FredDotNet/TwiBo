@@ -8,6 +8,7 @@ namespace TwiBo.Web.Models
 {
     public class SettingsModel
     {
+        public string RowKey { get; set; }
         public string Name { get; set; }
         public string Accounts { get; set; }
         public string HashTags { get; set; }

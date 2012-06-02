@@ -1,0 +1,39 @@
+﻿@model TwiBo.Web.Models.SettingsModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>UserQuery</legend>
+
+    <div class="display-label">Accounts</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Accounts)
+    </div>
+
+    <div class="display-label">Hashtags</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HashTags)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">RowKey</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RowKey)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        @Html.HiddenFor(model => model.RowKey)
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
