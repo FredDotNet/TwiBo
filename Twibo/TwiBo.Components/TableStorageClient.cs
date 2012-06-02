@@ -27,7 +27,7 @@ namespace TwiBo.Components
             _context.IgnoreResourceNotFoundException = true;
         }
 
-        protected IQueryable<TEntity> CreateQuery()
+        public IQueryable<TEntity> CreateQuery()
         {
             DataServiceQuery<TEntity> query = _context.CreateQuery<TEntity>(tableName);
             return query.AsTableServiceQuery();

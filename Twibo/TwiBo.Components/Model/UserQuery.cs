@@ -5,9 +5,12 @@ namespace TwiBo.Components
 {
     public class UserQuery : TableServiceEntity
     {
-        public static string GetPartitionKey(string identity)
+        public const string TableName = "UserQuery";
+
+        public static string GetPartitionKey(string identityProvider, string name)
         {
-            return identity.Replace("\\", "-").Replace("/", "-").Replace("#", "-").Replace("?", "-");
+            return identityProvider.Replace("\\", "-").Replace("/", "-").Replace("#", "-").Replace("?", "-") 
+                + "-" + name.Replace("\\", "-").Replace("/", "-").Replace("#", "-").Replace("?", "-");
         }
 
         /// <summary>
