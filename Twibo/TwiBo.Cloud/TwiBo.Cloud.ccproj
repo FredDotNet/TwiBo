@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>1.6</ProductVersion>
-    <ProjectGuid>{99999999-9999-9999-9999-999999999999}</ProjectGuid>
+    <ProjectGuid>{100fbce9-558b-414f-8d05-bead2ebc10e6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TwiBo.Cloud</RootNamespace>
@@ -35,6 +35,24 @@
     <ServiceDefinition Include="ServiceDefinition.csdef" />
     <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwiBo.Web\TwiBo.Web.csproj">
+      <Name>TwiBo.Web</Name>
+      <Project>{db56da78-14d0-4464-a106-e77339ced812}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>TwiBo.Web</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\TwiBo.Worker\TwiBo.Worker.csproj">
+      <Name>TwiBo.Worker</Name>
+      <Project>{e06caa83-35ef-4499-a154-8da935a3b1df}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>TwiBo.Worker</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
