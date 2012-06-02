@@ -43,7 +43,34 @@
         </p>
     </fieldset>
 }
-
+<h3>Queries</h3>
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <table>
+    <tr>
+        <th>
+            Accounts
+        </th>
+        <th>
+            Hashtags
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Queries) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accounts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hashtags)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
 </div>
