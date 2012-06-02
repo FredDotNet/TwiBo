@@ -12,22 +12,6 @@ body {
     color: #696969;
 }
 
-a#logo {
-    background-image: url('/img/logo.png');
-    background-repeat: no-repeat;
-    color: white;
-    display: inline;
-    line-height: 40px;
-    font-size: 16pt;
-    font-weight: normal;
-    margin-top: 5px;
-    text-decoration: none;
-    text-indent: -9999px;
-    text-transform: capitalize;
-    width: 200px;
-    position: absolute;
-}
-
 a:link {
     color: #034af3;
     text-decoration: underline;
