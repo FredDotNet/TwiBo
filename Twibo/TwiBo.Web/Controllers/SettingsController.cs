@@ -5,15 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using TwiBo.Components;
 using TwiBo.Web.Models;
+using TwiBo.Web.Tools;
 
 namespace TwiBo.Web.Controllers
 {
     public class SettingsController : Controller
     {
-        private const string partitionKey = "koen";
+        private readonly string partitionKey;
         private TableStorageClient<UserQuery> storageClient;
         public SettingsController()
         {
+            var identity = AcsIdentity.TryGet();
+            partitionKey= UserQuery.GetPartitionKey(identity.IdentityProvider, identity.Name);
             storageClient= new TableStorageClient<UserQuery>("UserQuery");
         }
 
@@ -53,6 +56,28 @@ namespace TwiBo.Web.Controllers
             var model = new SettingsModel();
 
             return View(model);
+        }
+
+        public ActionResult Delete(string id)
+        {
+            var queryToDelete = storageClient.CreateQuery().ToList().Single(q => q.RowKey == id);
+            var model = new Models.SettingsModel()
+            {
+                Accounts = queryToDelete.Accounts,
+                Name = queryToDelete.Name,
+                HashTags = queryToDelete.Hashtags,
+                RowKey = queryToDelete.RowKey,
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(SettingsModel model)
+        {
+            var queryToDelete = storageClient.CreateQuery().ToList().Single(q => q.RowKey == model.RowKey);
+            storageClient.Delete(queryToDelete);
+            storageClient.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

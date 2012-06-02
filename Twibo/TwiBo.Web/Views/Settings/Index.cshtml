@@ -67,9 +67,9 @@
                     @Html.DisplayFor(modelItem => item.Hashtags)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new {  id = item.RowKey }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RowKey }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RowKey })
                 </td>
             </tr>
         }
