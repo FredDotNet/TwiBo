@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TwiBo.Components;
 
 namespace TwiBo.Web.Models
 {
@@ -10,5 +11,7 @@ namespace TwiBo.Web.Models
         public string Name { get; set; }
         public string Accounts { get; set; }
         public string HashTags { get; set; }
+
+        public ICollection<UserQuery> Queries { get; set; }
     }
 }

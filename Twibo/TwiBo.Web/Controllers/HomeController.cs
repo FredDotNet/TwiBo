@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TwiBo.Web.Models;
+using TwiBo.Components;
 
 namespace TwiBo.Web.Controllers
 {
@@ -15,12 +16,6 @@ namespace TwiBo.Web.Controllers
             ViewBag.Message = "Welcome to ASP.NET MVC!";
 
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(SettingsModel model)
-        {
-
         }
 
         //Get /Dashboard/About
